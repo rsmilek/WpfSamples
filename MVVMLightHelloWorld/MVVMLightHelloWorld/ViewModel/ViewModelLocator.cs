@@ -42,14 +42,14 @@ namespace MVVMLightHelloWorld.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<SenderViewModel>();
         }
 
-        public MainViewModel Main
+        public SenderViewModel Main
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return ServiceLocator.Current.GetInstance<SenderViewModel>();
             }
         }
         

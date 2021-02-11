@@ -7,7 +7,7 @@ using GalaSoft.MvvmLight.Messaging;
 
 namespace MVVMLightHelloWorld.Messages
 {
-    class ViewModelMessage : MessageBase
+    public class ViewModelMessage : MessageBase
     {
         public string Text { get; set; }
     }

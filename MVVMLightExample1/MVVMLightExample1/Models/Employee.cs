@@ -15,6 +15,14 @@ namespace MVVMLightExample1.Models
     /// ObservableObject use that event in RaisePropertyChanged method to notify other classes. 
     /// In addition, ObservableObject class also provides a Set method to set the property and raise the PropertyChanged event automatically. 
     /// Set method takes property name, reference to the private variable and the new value. Below I have shown an example of Employee class.
+    /// 
+    /// I have created four properties name ID, Name, Age, and Salary in above model class. 
+    /// All properties setter used the Set method of ObservableObject. 
+    /// Set method assign a new value to the property and then call the RaisePropertyChanged method. 
+    /// The use of RaisePropertyChanged method is must as we have to update the UI when any property changed.
+    /// The last method GetSampleEmployees() creates a temporary employee list in memory and returns an ObservableCollection 
+    /// of Employee class. I have used that list for binding to the UI so that we don't need to use the database to loading 
+    /// and saving the employee details.
     /// </summary>
     public class Employee : ObservableObject
     {

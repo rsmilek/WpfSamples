@@ -10,6 +10,7 @@
         Width="525">
     
     <!-- Binding the DataContext property of DockPanel to the MainViewModel and set the Source property of binding to Locator. See App.xaml for more info. -->
+    <!-- We create an instance of locator class as key "Locator". We set this key in xaml as Source property of DataContext of DockPanel. -->
     <DockPanel LastChildFill="True" DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
 
         <ListBox DockPanel.Dock="Left" ItemsSource="{Binding EmployeeList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedEmployee}" Width="100" />

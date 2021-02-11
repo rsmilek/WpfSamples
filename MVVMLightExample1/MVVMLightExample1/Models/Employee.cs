@@ -82,9 +82,9 @@ namespace MVVMLightExample1.Models
         public static ObservableCollection<Employee> GetSampleEmployees()
         {
             ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
-            for (int i = 0; i < 30; ++i)
+            for (int i = 0; i < 10; ++i)
             {
-                employees.Add(new Employee
+                employees.Add(new Employee()
                 {
                     ID = i + 1,
                     Name = "Name " + (i + 1).ToString(),

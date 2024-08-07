@@ -1,2 +1,2 @@
 # WpfSamples
-Windows Presentation Foundation Samples
+Windows Presentation Foundation Samples repository

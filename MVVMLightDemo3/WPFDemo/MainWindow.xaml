@@ -14,7 +14,7 @@
         
     mc:Ignorable="d"
     Title="{Binding Title}" 
-    Height="470" Width="525"
+    Height="500" Width="525"
     DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
     
     <Window.Resources>
@@ -128,6 +128,14 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Label>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Parameter" />
+                <TextBox x:Name="tbParameter" Text="ParameterValue" />
+                <Button Content="Command with parameter" 
+                    Command="{Binding CommandWithParameterCommand}" 
+                    CommandParameter="{Binding Text, ElementName=tbParameter}"/>
+            </StackPanel>
 
         </StackPanel>
     </Grid>

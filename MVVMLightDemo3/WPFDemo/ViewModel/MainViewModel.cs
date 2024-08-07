@@ -21,6 +21,7 @@ namespace WPFDemo.ViewModel
         public ICommand TreeExpand2Command { get; }
         public ICommand TreeExpandFodyCommand { get; }
         public ICommand MouseRightButtonDownCommand { get; }
+        public ICommand CommandWithParameterCommand { get; }
 
         public bool IsChecked { get; set; } = false;
 
@@ -41,6 +42,7 @@ namespace WPFDemo.ViewModel
             TreeExpand2Command = new RelayCommand(() => TreeExpand2Click());
             TreeExpandFodyCommand = new RelayCommand(() => TreeExpandFodyClick());
             MouseRightButtonDownCommand = new RelayCommand(() => MouseRightButtonDownClick());
+            CommandWithParameterCommand = new RelayCommand<string>((p) => CommandWithParameterClick(p));
 
             TreeNodes.Add(PopulateTreeItems(defaultExpand: _isExpand));
             TreeNodes2.Add(PopulateTreeItems(defaultExpand: _isExpand));
@@ -83,6 +85,11 @@ namespace WPFDemo.ViewModel
         private void MouseRightButtonDownClick()
         {
             MessageBox.Show("MouseRightButtonDownClick");
+        }
+
+        private void CommandWithParameterClick(string parameter)
+        {
+            MessageBox.Show($"CommandWithParameterClick '{parameter}'");
         }
 
 

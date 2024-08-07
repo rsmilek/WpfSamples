@@ -122,7 +122,7 @@
             <Label Height="30">
                 Right button click me!
                 <i:Interaction.Triggers>
-                    <!-- define component's event name for further use in code behind command implemenation -->
+                    <!-- define component's event name for further use in code behind command implementation -->
                     <i:EventTrigger EventName="MouseRightButtonDown">
                         <i:InvokeCommandAction Command="{Binding MouseRightButtonDownCommand}"/>
                     </i:EventTrigger>

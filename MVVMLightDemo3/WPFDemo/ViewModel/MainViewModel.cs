@@ -1,8 +1,10 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using PropertyChanged;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace WPFDemo.ViewModel
@@ -14,10 +16,11 @@ namespace WPFDemo.ViewModel
 
         public string Title { get; set; }
 
-        public ICommand MyButtonCommand { get; private set; }
-        public ICommand TreeExpandCommand { get; private set; }
-        public ICommand TreeExpand2Command { get; private set; }
-        public ICommand TreeExpandFodyCommand { get; private set; }
+        public ICommand MyButtonCommand { get; }
+        public ICommand TreeExpandCommand { get; }
+        public ICommand TreeExpand2Command { get; }
+        public ICommand TreeExpandFodyCommand { get; }
+        public ICommand MouseRightButtonDownCommand { get; }
 
         public bool IsChecked { get; set; } = false;
 
@@ -37,6 +40,7 @@ namespace WPFDemo.ViewModel
             TreeExpandCommand = new RelayCommand(() => TreeExpandClick());
             TreeExpand2Command = new RelayCommand(() => TreeExpand2Click());
             TreeExpandFodyCommand = new RelayCommand(() => TreeExpandFodyClick());
+            MouseRightButtonDownCommand = new RelayCommand(() => MouseRightButtonDownClick());
 
             TreeNodes.Add(PopulateTreeItems(defaultExpand: _isExpand));
             TreeNodes2.Add(PopulateTreeItems(defaultExpand: _isExpand));
@@ -74,6 +78,11 @@ namespace WPFDemo.ViewModel
         {
             _isExpand = !_isExpand;
             TraverseFody(TreeNodesFody.First(), _isExpand);
+        }
+
+        private void MouseRightButtonDownClick()
+        {
+            MessageBox.Show("MouseRightButtonDownClick");
         }
 
 

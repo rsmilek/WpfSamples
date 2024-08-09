@@ -19,6 +19,32 @@
     
     <Window.Resources>
         <converters:IsExpandedConverter x:Key="IsExpandedConverter" />
+
+        <Style x:Key="ContentCtrl" TargetType="{x:Type ContentControl}">
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Foreground" Value="Green"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Grid>
+                            <!--Keep the Ellipse a circle when ContentControl.Width is set.-->
+                            <Ellipse 
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Width}"
+                                Fill="{TemplateBinding Background}"/>
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Yellow" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -151,11 +177,17 @@
                 </Button.ContextMenu>
             </Button>
 
+            
 
             <Border Height="35" BorderThickness="3" Background="Aqua">
                 <Label>Border example</Label>
             </Border>
-            
+
+
+
+            <!-- ContentControl can be controls like Button, ...  -->
+            <ContentControl Width="75" Style="{StaticResource ContentCtrl}" Content="Hello"/>
+
         </StackPanel>
     </Grid>
 </Window>

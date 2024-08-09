@@ -150,6 +150,11 @@
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
+
+
+            <Border Height="35" BorderThickness="3" Background="Aqua">
+                <Label>Border example</Label>
+            </Border>
             
         </StackPanel>
     </Grid>

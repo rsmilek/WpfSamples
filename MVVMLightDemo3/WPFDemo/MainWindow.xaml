@@ -14,7 +14,7 @@
         
     mc:Ignorable="d"
     Title="{Binding Title}" 
-    Height="600" Width="800"
+    Height="800" Width="800"
     DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
     
     <Window.Resources>
@@ -45,6 +45,21 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- Static resource XAML definition example -->
+        <local:TodoItemCollection x:Key="TodoItemsXaml">
+            <models:TodoItem Name="Item 1" Description="Description 1" Priority="1" />
+            <models:TodoItem Name="Item 2" Description="Description 2" Priority="2" />
+        </local:TodoItemCollection>
+        
+        <!-- Data template as static resource definition example -->
+        <DataTemplate x:Key="TodoItemDataTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Name}" Margin="5" />
+                <TextBlock Text="{Binding Priority}" Margin="5" />
+                <TextBlock Text="{Binding Description}" Margin="5" />
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -168,7 +183,14 @@
                     CommandParameter="{Binding Text, ElementName=tbParameter}"/>
             </StackPanel>
 
-            
+
+
+            <!-- Static resources example: data & DataTemplate -->
+            <!--<ListBox ItemsSource="{StaticResource TodoItemsCodeBehind}" ItemTemplate="{StaticResource TodoItemDataTemplate}" />-->
+            <ListBox ItemsSource="{StaticResource TodoItemsXaml}" ItemTemplate="{StaticResource TodoItemDataTemplate}" />
+
+
+
         </StackPanel>
 
 

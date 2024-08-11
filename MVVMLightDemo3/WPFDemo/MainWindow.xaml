@@ -14,7 +14,7 @@
         
     mc:Ignorable="d"
     Title="{Binding Title}" 
-    Height="600" Width="525"
+    Height="600" Width="800"
     DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
     
     <Window.Resources>
@@ -48,8 +48,12 @@
     </Window.Resources>
 
     <Grid>
-        <StackPanel>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
             <Button Content="MyButton" Command="{Binding MyButtonCommand}"></Button>
             <CheckBox Content="MyCheckBox" IsChecked="{Binding IsChecked}"></CheckBox>
             <CheckBox Content="IsExpanded" IsChecked="{Binding Node.IsExpanded}"></CheckBox>
@@ -164,7 +168,14 @@
                     CommandParameter="{Binding Text, ElementName=tbParameter}"/>
             </StackPanel>
 
+            
+        </StackPanel>
 
+
+
+
+
+        <StackPanel Grid.Column="1">
             <Button>
                 <Button.Content>
                     Right-click me! (ContextMenu example)
@@ -177,7 +188,7 @@
                 </Button.ContextMenu>
             </Button>
 
-            
+
 
             <Border Height="35" BorderThickness="3" Background="Aqua">
                 <Label>Border example</Label>
@@ -186,8 +197,76 @@
 
 
             <!-- ContentControl can be controls like Button, ...  -->
-            <ContentControl Width="75" Style="{StaticResource ContentCtrl}" Content="Hello"/>
+            <ContentControl Width="75" Style="{StaticResource ContentCtrl}" Content="Hello" />
+
+
+
+
+            <!-- ItemsControl can be controls like ListBox, ComboBox,... -->
+            <!-- This is a templating example of ItemsControl, but modified against original in sense of item definition - 
+            original item object with fields like Priority/TaskName/Description is replaced by string item only. 
+            source: https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.itemscontrol?view=windowsdesktop-8.0 -->
+            <ItemsControl Margin="10" ItemsSource="{Binding StringItems}">
+                <!--The ItemsControl has no default visual appearance.
+                Use the Template property to specify a ControlTemplate to define the appearance of an ItemsControl.
+                The ItemsPresenter uses the specified ItemsPanelTemplate (see below) to layout the items.
+                If an ItemsPanelTemplate is not specified, the default is used. 
+                (For ItemsControl, the default is an ItemsPanelTemplate that specifies a StackPanel.-->
+                <ItemsControl.Template>
+                    <ControlTemplate TargetType="ItemsControl">
+                        <Border BorderBrush="Aqua" BorderThickness="3" CornerRadius="15">
+                            <ItemsPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+                <!--Use the ItemsPanel property to specify an ItemsPanelTemplate that defines the panel that is used
+                to hold the generated items. In other words, use this property if you want to affect how the items are laid out.-->
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                        <!--<StackPanel />-->
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <!--Use the ItemTemplate to set a DataTemplate to define the visualization of the data objects. This DataTemplate
+                specifies that each data object appears with the Priority and TaskName on top of a silver ellipse.-->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <DataTemplate.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataTemplate.Resources>
+                        <Grid>
+                            <Ellipse Fill="Silver"/>
+                            <StackPanel>
+                                <!--<TextBlock Margin="3,3,3,0" Text="{Binding Path=Priority}"/>
+                                <TextBlock Margin="3,0,3,7" Text="{Binding Path=TaskName}"/>-->
+                                <TextBlock Margin="3,3,3,0" Text="{Binding .}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <!--Use the ItemContainerStyle property to specify the appearance of the element that contains the data.
+                This ItemContainerStyle gives each item container a margin and a width. There is also a trigger that sets 
+                a tooltip that shows the description of the data object when the mouse hovers over the item container.-->
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Control.Width" Value="100"/>
+                        <Setter Property="Control.Margin" Value="5"/>
+                        <Style.Triggers>
+                            <Trigger Property="Control.IsMouseOver" Value="True">
+                                <!--<Setter Property="Control.ToolTip" 
+                                        Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=Content.Description}"/>-->
+                                <Setter Property="Control.ToolTip" 
+                                        Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=Content}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>
 
         </StackPanel>
+
     </Grid>
 </Window>

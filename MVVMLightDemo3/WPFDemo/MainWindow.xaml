@@ -6,6 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    
     xmlns:local="clr-namespace:WPFDemo"
     xmlns:models="clr-namespace:WPFDemo.Models"
     xmlns:viewmodels="clr-namespace:WPFDemo.ViewModel"
@@ -60,8 +62,17 @@
                 <TextBlock Text="{Binding Description}" Margin="5" />
             </StackPanel>
         </DataTemplate>
+
+        <!-- Static resource XAML definition example -->
+        <ObjectDataProvider x:Key="personDataSource" ObjectType="{x:Type models:Person}">
+            <ObjectDataProvider.ConstructorParameters>
+                <system:String>Joe</system:String>
+            </ObjectDataProvider.ConstructorParameters>
+        </ObjectDataProvider>
+
     </Window.Resources>
 
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -190,7 +201,25 @@
             <ListBox ItemsSource="{StaticResource TodoItemsXaml}" ItemTemplate="{StaticResource TodoItemDataTemplate}" />
 
 
-
+            <!-- Data Biding example -> UpdateSourceTrigger -->
+            <Border Margin="3" BorderBrush="Aqua" BorderThickness="2" Padding="2">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical" Width="200">
+                        <Label>Enter a Name:</Label>
+                        <TextBox>
+                            <TextBox.Text>
+                                <Binding Source="{StaticResource personDataSource}" Path="Name" UpdateSourceTrigger="LostFocus" />
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical"  Width="200">
+                        <Label>The name you entered:</Label>
+                        <TextBlock Text="{Binding Source={StaticResource personDataSource}, Path=Name}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            
+            
         </StackPanel>
 
 

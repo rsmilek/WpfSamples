@@ -52,11 +52,11 @@
 
         <!-- Static resource XAML definition example -->
         <local:TodoItemCollection x:Key="TodoItemsXaml">
-            <models:TodoItem Name="Item 1" Description="Description 1" Priority="1" />
+            <models:TodoItem Name="Item 1" Description="IMPORTANT" Priority="1" />
             <models:TodoItem Name="Item 2" Description="Description 2" Priority="2" />
         </local:TodoItemCollection>
         
-        <!-- Data template as static resource definition example -->
+        <!-- Data template as static resource definition example - standard item -->
         <DataTemplate x:Key="TodoItemDataTemplate" DataType="{x:Type models:TodoItem}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding Name}" Margin="5" />
@@ -64,6 +64,25 @@
                 <TextBlock Text="{Binding Description}" Margin="5" />
             </StackPanel>
         </DataTemplate>
+
+        <!-- Data template as static resource definition example - extra important item -->
+        <DataTemplate x:Key="TodoImportantItemDataTemplate">
+            <DataTemplate.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+            </DataTemplate.Resources>
+            <Border Name="border" BorderBrush="Red" BorderThickness="1" Padding="5" Margin="5">
+                <DockPanel HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding Path=Description}" />
+                    <TextBlock>!</TextBlock>
+                </DockPanel>
+            </Border>
+        </DataTemplate>
+
+        <!-- DataTemplate selector as static resource definition example -->
+        <viewmodels:TodoItemDataTemplateSelector x:Key="todoItemDataTemplateSelector"/>
+        
 
         <!-- Static resource XAML definition example -->
         <ObjectDataProvider x:Key="personDataSource" ObjectType="{x:Type models:Person}">
@@ -203,7 +222,9 @@
 
             <!-- Static resources example: data & DataTemplate -->
             <!--<ListBox ItemsSource="{StaticResource TodoItemsCodeBehind}" ItemTemplate="{StaticResource TodoItemDataTemplate}" />-->
-            <ListBox ItemsSource="{StaticResource TodoItemsXaml}" ItemTemplate="{StaticResource TodoItemDataTemplate}" />
+            <!--<ListBox ItemsSource="{StaticResource TodoItemsXaml}" ItemTemplate="{StaticResource TodoItemDataTemplate}" />-->
+            <ListBox ItemsSource="{StaticResource TodoItemsXaml}" 
+                     ItemTemplateSelector="{StaticResource todoItemDataTemplateSelector}"/>
 
 
             <!-- Data Biding example -> UpdateSourceTrigger -->

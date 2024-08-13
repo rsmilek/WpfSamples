@@ -93,6 +93,7 @@
     <Compile Include="ViewModel\NodeMvvmViewModel.cs" />
     <Compile Include="ViewModel\NodeViewModel.cs" />
     <Compile Include="ViewModel\Node2ViewModel.cs" />
+    <Compile Include="ViewModel\TodoItemDataTemplateSelector.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

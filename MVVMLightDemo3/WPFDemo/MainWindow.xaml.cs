@@ -36,4 +36,18 @@ namespace WPFDemo
     public class TodoItemCollection : ObservableCollection<TodoItem>
     {
     }
+
+    public class Tasks : ObservableCollection<TodoItem>
+    {
+        public Tasks()
+        {
+            new List<TodoItem>
+            {
+                new TodoItem { Name = "Item 1", Description = "Description 1", Priority = 1 },
+                new TodoItem { Name = "Item 2", Description = "Description 2", Priority = 2 },
+                new TodoItem { Name = "Item 3", Description = "Description 3", Priority = 3 }
+            };
+        }
+    }
+
 }

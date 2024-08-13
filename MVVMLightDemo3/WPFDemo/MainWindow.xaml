@@ -70,6 +70,9 @@
             </ObjectDataProvider.ConstructorParameters>
         </ObjectDataProvider>
 
+        <!-- Static resource XAML definition example -> 'Tasks' is collection declared in code-behind and referenced in XAML as 'tasksItemSource' -->
+        <local:Tasks x:Key="tasksItemSource"/>
+
     </Window.Resources>
 
     

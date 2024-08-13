@@ -57,7 +57,7 @@
         </local:TodoItemCollection>
         
         <!-- Data template as static resource definition example -->
-        <DataTemplate x:Key="TodoItemDataTemplate">
+        <DataTemplate x:Key="TodoItemDataTemplate" DataType="{x:Type models:TodoItem}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding Name}" Margin="5" />
                 <TextBlock Text="{Binding Priority}" Margin="5" />

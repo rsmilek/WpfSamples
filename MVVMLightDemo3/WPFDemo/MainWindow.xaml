@@ -22,7 +22,7 @@
     <Window.Resources>
         <converters:IsExpandedConverter x:Key="IsExpandedConverter" />
 
-        <Style x:Key="ContentCtrl" TargetType="{x:Type ContentControl}">
+        <Style x:Key="ContentCtrlStyle" TargetType="{x:Type ContentControl}">
             <Setter Property="Background" Value="Red"/>
             <Setter Property="Foreground" Value="Green"/>
             <Setter Property="FontSize" Value="20"/>
@@ -248,7 +248,7 @@
 
 
             <!-- ContentControl can be controls like Button, ...  -->
-            <ContentControl Width="75" Style="{StaticResource ContentCtrl}" Content="Hello" />
+            <ContentControl Width="75" Style="{StaticResource ContentCtrlStyle}" Content="Hello" />
 
 
 

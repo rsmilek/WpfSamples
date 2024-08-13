@@ -66,16 +66,19 @@
         </DataTemplate>
 
         <!-- Data template as static resource definition example - extra important item -->
-        <DataTemplate x:Key="TodoImportantItemDataTemplate">
+        <DataTemplate x:Key="TodoImportantItemDataTemplate" DataType="{x:Type models:TodoItem}">
             <DataTemplate.Resources>
-                <Style TargetType="TextBlock">
+                <Style x:Key="BaseStyle" TargetType="TextBlock">
                     <Setter Property="FontSize" Value="20"/>
+                </Style>
+                <Style x:Key="InheritedStyle" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                    <Setter Property="FontStyle" Value="Italic"/>
                 </Style>
             </DataTemplate.Resources>
             <Border Name="border" BorderBrush="Red" BorderThickness="1" Padding="5" Margin="5">
                 <DockPanel HorizontalAlignment="Center">
-                    <TextBlock Text="{Binding Path=Description}" />
-                    <TextBlock>!</TextBlock>
+                    <TextBlock Text="{Binding Path=Description}" Style="{StaticResource InheritedStyle}"/>
+                    <TextBlock Style="{StaticResource InheritedStyle}">!</TextBlock>
                 </DockPanel>
             </Border>
         </DataTemplate>

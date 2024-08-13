@@ -22,6 +22,8 @@
     <Window.Resources>
         <converters:IsExpandedConverter x:Key="IsExpandedConverter" />
 
+        <!-- Therefore, if you assign this Style an x:Key value, you are overriding the implicit x:Key 
+        and the Style would not be applied automatically. So x:Key value must be defined on a control. -->
         <Style x:Key="ContentCtrlStyle" TargetType="{x:Type ContentControl}">
             <Setter Property="Background" Value="Red"/>
             <Setter Property="Foreground" Value="Green"/>
@@ -251,7 +253,8 @@
 
 
             <!-- ContentControl can be controls like Button, ...  -->
-            <ContentControl Width="75" Style="{StaticResource ContentCtrlStyle}" Content="Hello" />
+            <ContentControl Style="{StaticResource ContentCtrlStyle}" 
+                Width="75" Content="Hello" />
 
 
 

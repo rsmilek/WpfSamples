@@ -10,6 +10,7 @@
     
     xmlns:local="clr-namespace:WPFDemo"
     xmlns:models="clr-namespace:WPFDemo.Models"
+    xmlns:views="clr-namespace:WPFDemo.View"
     xmlns:viewmodels="clr-namespace:WPFDemo.ViewModel"
     xmlns:behaviours="clr-namespace:WPFDemo.Behaviors"
     xmlns:converters="clr-namespace:WPFDemo.Converters"
@@ -346,6 +347,11 @@
                     </Style>
                 </ItemsControl.ItemContainerStyle>
             </ItemsControl>
+
+
+
+            <!-- UserControl / View inserting example -->
+            <views:ValueUnitUserControl/>
 
         </StackPanel>
 

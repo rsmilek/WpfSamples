@@ -18,9 +18,9 @@ namespace WPFDemo.View
     /// <summary>
     /// Interaction logic for UserControl.xaml
     /// </summary>
-    public partial class ValueUnitUserControl : UserControl
+    public partial class ValueUnitView : UserControl
     {
-        public ValueUnitUserControl()
+        public ValueUnitView()
         {
             InitializeComponent();
         }

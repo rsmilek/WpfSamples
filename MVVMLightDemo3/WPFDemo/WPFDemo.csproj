@@ -95,8 +95,8 @@
     <Compile Include="ViewModel\Node2ViewModel.cs" />
     <Compile Include="ViewModel\TodoItemDataTemplateSelector.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="View\ValueUnitUserControl.xaml.cs">
-      <DependentUpon>ValueUnitUserControl.xaml</DependentUpon>
+    <Compile Include="View\ValueUnitView.xaml.cs">
+      <DependentUpon>ValueUnitView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -110,7 +110,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\ValueUnitUserControl.xaml">
+    <Page Include="View\ValueUnitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

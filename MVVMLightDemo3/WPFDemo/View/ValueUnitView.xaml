@@ -4,9 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDemo.View"
-             mc:Ignorable="d" 
+             xmlns:viewmodels="clr-namespace:WPFDemo.ViewModel"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance viewmodels:ValueUnitViewModel, IsDesignTimeCreatable = True}"
              >
-
+    
+    <!--<UserControl.DataContext>
+        <viewmodels:ValueUnitViewModel />
+    </UserControl.DataContext>-->
+    
     <UserControl.Resources>
         <Style x:Key="LabelUnitStyleBase" TargetType="TextBlock">
             <Setter Property="Margin" Value="8 0 0 0" />
@@ -26,9 +32,9 @@
     </UserControl.Resources>
     
     <StackPanel Orientation="Horizontal">
-        <TextBlock Style="{StaticResource LabelStyle}">Label</TextBlock>
-        <TextBox Style="{StaticResource ValueStyle}">Value</TextBox>
-        <TextBlock Style="{StaticResource UnitStyle}">Unit</TextBlock>
+        <TextBlock Style="{StaticResource LabelStyle}" Text="{Binding Label}" />
+        <TextBox Style="{StaticResource ValueStyle}" Text="{Binding Value}" />
+        <TextBlock Style="{StaticResource UnitStyle}" Text="{Binding Unit}" />
     </StackPanel>
 
 </UserControl>

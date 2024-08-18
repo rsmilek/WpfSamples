@@ -35,6 +35,8 @@ namespace WPFDemo.ViewModel
 
         public ObservableCollection<string> StringItems { get; set; } = new ObservableCollection<string> { "Item 1", "Item 2", "Item 3", "Item 4" };
 
+        public ValueUnitViewModel ValueUnit { get; set; } = new ValueUnitViewModel("ALabel", "AValue", "AUnit");
+
         public MainViewModel()
         {
             Title = "Hello MVVM Light" + (IsInDesignMode ? " (Design Mode)" : string.Empty);

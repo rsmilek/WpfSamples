@@ -94,6 +94,7 @@
     <Compile Include="ViewModel\NodeViewModel.cs" />
     <Compile Include="ViewModel\Node2ViewModel.cs" />
     <Compile Include="ViewModel\TodoItemDataTemplateSelector.cs" />
+    <Compile Include="ViewModel\ValueUnitViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\ValueUnitView.xaml.cs">
       <DependentUpon>ValueUnitView.xaml</DependentUpon>
